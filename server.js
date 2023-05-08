@@ -173,28 +173,24 @@ function updateEmployeeRole() {
         employees.map(employee => {
             console.log(employee.first_name);
         })
+    
+    db.query("SELECT * FROM employee", (err, data2) => {
+        if (err) console.log(err)
+        const roles = data2;
+        roles.map(employee => {
+            console.log(employee.role_id);
+        })
 
 
-
-        // db.query("SELECT * FROM employee", (err, data) => {
-        //     if (err) console.log(err)
-        //     const employees = data;
-        //     employees.map(employee =>{
-        //         console.log(employee.first_name);
-
-
-        inquirer.prompt([
-            {
-                type: "list",
-                name: "employee_role",
-                message: "Select the employee to update?",
-
-                choices: employees.map(employee => employee.first_name)
-            }
-
-
-        ])
-
+        // inquirer.prompt([
+        //     {
+        //         type: "list",
+        //         name: "employee",
+        //         message: "Select the employee to update?",
+        //         choices: roles.map(employee => {employee.role_id})
+        //     }
+        // ])
+    })
         // console.table(data)
         // mainMenu()
     })

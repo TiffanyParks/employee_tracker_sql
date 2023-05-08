@@ -24,7 +24,7 @@ function mainMenu() {
                 "add a department",
                 "add a role",
                 "add an employee",
-                "and update an employee role"
+                "update an employee role"
             ]
         }
     ])
@@ -41,13 +41,15 @@ function mainMenu() {
             if (answer.action == "add a department") {
                 createDepartment()
             }
-            if (answer.action ==  "add a role") {
+            if (answer.action == "add a role") {
                 createRole()
             }
-            if (answer.action ==  "add an employee") {
+            if (answer.action == "add an employee") {
                 createEmployee()
             }
-            
+            if (answer.action == "update an employee role") {
+                updateEmployeeRole()
+            }
         })
 }
 
@@ -153,17 +155,51 @@ function createEmployee() {
             message: "What is the manager_id number of the new employee?",
         },
     ])
-    .then(answers => {
-        db.query("INSERT INTO employee (first_name, last_name, role_id, manager_id ) VALUES (?, ?, ?, NULL);",
-        [answers.first_name, answers.last_name, answers.role_id, answers.manager_id], (err, data) => {
-            if (err) console.log(err)
+        .then(answers => {
+            db.query("INSERT INTO employee (first_name, last_name, role_id, manager_id ) VALUES (?, ?, ?, NULL);",
+                [answers.first_name, answers.last_name, answers.role_id, answers.manager_id], (err, data) => {
+                    if (err) console.log(err)
 
-            console.log("Employee has been added!")
-            mainMenu()
-        })   
-    })  
+                    console.log("Employee has been added!")
+                    mainMenu()
+                })
+        })
 }
 
+function updateEmployeeRole() {
+    const employees = [
+        { first_name: "Mary", last_name: "Smith", role_id: 3 },
+        { first_name: "John", last_name: "Smith", role_id: 4 },
+        { first_name: "Mike", last_name: "Chan", role_id: 1 },
+    ];
+
+    inquirer.prompt([
+        {
+            type: "list",
+            name: "employee_role",
+            message: "Select the employee to update?",
+            choices: resEmplyees.map((employee) => {
+                employees.map(getEmployeeRole);
+                function getEmployeeRole(employee) {
+                    return [employee.first_name, employee.last_name, employee.role_id].join("");
+                }
+            }),
+            //
+        },
+        {
+            type: "input",
+            name: "new_role",
+            message: "Enter the name of the employee's new role."
+        },
+    ])
+}
+// db.query("UPDATE employee SET employee.role,REPLACE () WHERE  ) employee.last_name, employee.role_id FROM employee WHERE",
+//     [answers.first_name, answers.last_name, answers.role_id, answers.manager_id], (err, data) => {
+//         if (err) console.log(err)
+
+//         console.log("Employee has been added!")
+//         mainMenu()
+//     }
 
 
 mainMenu()

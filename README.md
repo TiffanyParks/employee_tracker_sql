@@ -39,6 +39,11 @@ THEN I am prompted to select an employee to update and their new role and this i
 GitHub URL: https://github.com/TiffanyParks/employee_tracker_sql.git
 Screencastify URL: https://watch.screencastify.com/v/pYShe00CnJBpCBps5Ndk
 
-"C:\Users\Admin\Desktop\Bootcamp\activity-workspace\UNCC-VIRT-FSF-FT-02-2023-U-LOLC\UNCC-VIRT-FSF-FT-02-2023-U-LOLC\17-CS\01-Activities\14-Stu_Closures\Unsolved\node_modules\jsdom\lib\jsdom\living\generated\Screen.js"
+<img width="205" alt="image" src="https://user-images.githubusercontent.com/126128634/236843470-04e0b49d-e456-4188-96e0-a9de2a96501f.png">
+<img width="196" alt="image" src="https://user-images.githubusercontent.com/126128634/236843593-7ac1fb2d-d09a-4cfa-bff5-696aef52a4d6.png">
+<img width="214" alt="image" src="https://user-images.githubusercontent.com/126128634/236843732-1df2cd58-c4ad-4691-a9c2-4852c0235a87.png">
 
-"C:\Users\Admin\Desktop\Bootcamp\activity-workspace\UNCC-VIRT-FSF-FT-02-2023-U-LOLC\UNCC-VIRT-FSF-FT-02-2023-U-LOLC\17-CS\01-Activities\22-Stu_Linear-Search\Unsolved\node_modules\jsdom\lib\jsdom\living\generated\Screen.js"
+
+
+
+

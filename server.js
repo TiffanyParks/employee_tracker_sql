@@ -44,6 +44,10 @@ function mainMenu() {
             if (answer.action ==  "add a role") {
                 createRole()
             }
+            if (answer.action ==  "add an employee") {
+                createEmployee()
+            }
+            
         })
 }
 
@@ -102,17 +106,17 @@ function createRole() {
         {
             type: "input",
             name: "title",
-            message: " What is the title of the new role?",
+            message: "What is the title of the new role?",
         },
         {
             type: "input",
             name: "salary",
-            message: " What is the salary of the new role?",
+            message: "What is the salary of the new role?",
         },
         {
             type: "input",
             name: "department_id",
-            message: " What is the department_id number of the new role?",
+            message: "What is the department_id number of the new role?",
         },
     ])
         .then(answers => {
@@ -124,6 +128,40 @@ function createRole() {
                     mainMenu()
                 })
         })
+}
+
+function createEmployee() {
+    inquirer.prompt([
+        {
+            type: "input",
+            name: "first_name",
+            message: "What is the first name of the new employee?",
+        },
+        {
+            type: "input",
+            name: "last_name",
+            message: "What is the last name of the new employee?",
+        },
+        {
+            type: "input",
+            name: "role_id",
+            message: "What is the role_id number of the new employee?",
+        },
+        {
+            type: "input",
+            name: "manager_id",
+            message: "What is the manager_id number of the new employee?",
+        },
+    ])
+    .then(answers => {
+        db.query("INSERT INTO employee (first_name, last_name, role_id, manager_id ) VALUES (?, ?, ?, NULL);",
+        [answers.first_name, answers.last_name, answers.role_id, answers.manager_id], (err, data) => {
+            if (err) console.log(err)
+
+            console.log("Employee has been added!")
+            mainMenu()
+        })   
+    })  
 }
 
 

@@ -174,11 +174,11 @@ function updateEmployeeRole() {
             console.log(employee.first_name);
         })
     
-    db.query("SELECT * FROM employee", (err, data2) => {
+    db.query("SELECT * FROM role", (err, data2) => {
         if (err) console.log(err)
         const roles = data2;
-        roles.map(employee => {
-            console.log(employee.role_id);
+        roles.map(role => {
+            console.log(role.title);
         })
 
 

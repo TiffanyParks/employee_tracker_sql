@@ -167,34 +167,59 @@ function createEmployee() {
 }
 
 function updateEmployeeRole() {
-    db.query("SELECT * FROM employee", (err, data) => {
-        if (err) console.log(err)
-        const employees = data;
-        employees.map(employee => {
-            console.log(employee.first_name);
-        })
+//     db.query("SELECT * FROM employee", (err, data) => {
+//         if (err) console.log(err)
+//         const employees = data;
+//         employees.map(employee => {
+//             console.log(employee.first_name);
+//         })
     
-    db.query("SELECT * FROM role", (err, data2) => {
-        if (err) console.log(err)
-        const roles = data2;
-        roles.map(role => {
-            console.log(role.title);
-        })
+//     db.query("SELECT * FROM role", (err, data2) => {
+//         if (err) console.log(err)
+//         const roles = data2;
+//         roles.map(role => {
+//             console.log(role.title);
+//         })
 
+       
 
-        // inquirer.prompt([
-        //     {
-        //         type: "list",
-        //         name: "employee",
-        //         message: "Select the employee to update?",
-        //         choices: roles.map(employee => {employee.role_id})
-        //     }
-        // ])
+//         // inquirer.prompt([
+//         //     {
+//         //         type: "list",
+//         //         name: "employee",
+//         //         message: "Select the employee to update?",
+//         //         choices: roles.map(employee => {employee.role_id})
+//         //     }
+//         // ])
+//     })
+//         // console.table(data)
+//         // mainMenu()
+//     })
+
+// }
+inquirer.prompt([
+    {
+        type: "list",
+        name: "employee",
+        message: "Select the employee to update?",
+        choices: employees.map(employee => {employee.first_name})
+    }, 
+    {  type: "list",
+        name: "role",
+        message: "Select the new role for the employee?",
+        choices: roles.map(role => {role.title}) 
+    } 
+]).then(answers => {
+
+    const employeeId = employees.find(employee => employee.first_name === answers.employee).id;
+
+    const roleId = roles.find(role => role.title === answers.role).id;
+
+    db.query("UPDATE employee SET role_id = ? WHERE id = ?", [roleId, employeeId], (err, data) => {
+        if (err) console.log(err);
+        console.log("Employee role updated successfully!");
     })
-        // console.table(data)
-        // mainMenu()
-    })
-
-}
+})
+};
 
 mainMenu()

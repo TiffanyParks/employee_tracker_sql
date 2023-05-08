@@ -172,7 +172,7 @@ function updateEmployeeRole() {
 
         db.query("SELECT * FROM role", (err, roles) => {
             if (err) console.log(err)
-            console.log(employees);
+            // console.log(employees);
             console.log('hi', roles);
 
             inquirer.prompt([
